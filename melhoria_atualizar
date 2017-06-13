@@ -1,0 +1,190 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Código :
+// Data   :
+// vairáveis:
+int m[4][4] = {{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0}};
+int i, j, a, l, c, pontos = 0, jogo = 0, alt = 0, num = 0, cont = 0, aux = 0;
+char seta;
+ 
+// MAIN LOOP: 
+int main () {
+
+// inicializando o tabuleiro:
+srand(time(NULL));
+alt = rand();
+alt %=10;
+printf("numero aleatório 1: %d\n", &alt);
+if (alt == 0){
+    num = 4;
+}
+else {
+    num = 2; 
+}
+
+// posição aleatória do número dentro da matriz.
+for (aux=0;aux<1;){
+alt = rand();
+alt %=16;
+printf("posição aleatória 1: %d\n", &alt);
+for (i=0;i<4;i++){
+    for (j=0;j<4;j++){
+        if (m[i][j] == 0){
+            cont ++;
+        }
+        if (cont == alt){
+            if (m[i][j] != 0){
+            aux--;
+            cont = 0;
+            }
+            else{
+            m[i][j] = num;
+            cont = 0;
+            aux ++;
+            }
+        }
+        
+    }
+}
+}
+alt = rand();
+alt %=10;
+printf("numero aleatório 2: %d\n", &alt);
+if (alt == 0){
+    num = 4;
+}
+else {
+    num = 2; 
+}
+
+for (aux=0;aux<1;){
+alt = rand();
+alt %=16;
+printf("posição aleatória 1: %d\n", &alt);
+for (i=0;i<4;i++){
+    for (j=0;j<4;j++){
+        if (m[i][j] == 0){
+            cont ++;
+        }
+        if (cont == alt){
+            if (m[i][j] != 0){
+            aux--;
+            cont = 0;
+            }
+            else{
+            m[i][j] = num;
+            cont = 0;
+            aux ++;
+            }
+        }
+        
+    }
+}
+}
+// atualiza a tela com a nova matriz: 
+//system ("cls");
+printf(" \n ");
+printf("\t    2048\n\n");
+// "formatação condicional" para apresentação dos pontos:
+if (pontos <= 10){
+    printf("\t  Pontos: %d\n\n", pontos);
+}
+else if (pontos >10 && pontos <= 100){
+    printf("          Pontos: %d\n\n", pontos);
+}
+else {
+    printf("        Pontos: %d\n\n", pontos);
+}
+//-----------------------------------------------------//
+for (l=0;l<4;l++){
+    printf ("-----------------------------\n");
+    for (c=0;c<4;c++){
+     if (m[l][c]==0){
+        if (c == 3){
+            printf("|      |");
+        }
+        else {
+            printf("|      ");
+        }
+    }
+     else {
+        if (c == 3){
+            if (m[l][c] > 1023){
+                printf("| %d |",m[l][c]);
+            }
+            else if (m[l][c] > 127){
+                printf("| %d  |",m[l][c]);
+            }
+            else if (m[l][c] > 15){
+                printf("|  %d  |",m[l][c]);
+            }
+            else {
+                printf("|  %d   |",m[l][c]);
+            }
+        }
+        else {
+            if (m[l][c] > 1023){
+                printf("| %d ",m[l][c]);
+            }
+            else if (m[l][c] > 127){
+                printf("| %d  ",m[l][c]);
+            }
+            else if (m[l][c] > 15){
+                printf("|  %d  ",m[l][c]);
+            }
+            else {
+                printf("|  %d   ",m[l][c]);
+            }
+            }
+        }
+    }
+       printf("\n"); 
+ }
+
+scanf("%d", &jogo);
+
+printf ("-----------------------------\n");
+printf("\n\n");
+printf("          Comandos:\n\n\t     w\n\n          a  s  d\n\n\n");
+
+if (jogo == -1){
+    system ("cls");
+    printf("\n\n\n\n\n\n       DEMOROU MAS FOI \\O/\n\n\n\n\n\n");
+        // "formatação condicional" para apresentação dos pontos:
+if (pontos <= 10){
+    printf("\t  Pontos: %d\n\n\n\n", pontos);
+}
+else if (pontos >10 && pontos <= 100){
+    printf("          Pontos: %d\n\n", pontos);
+}
+else {
+    printf("        Pontos: %d\n\n\n\n", pontos);
+}
+//-----------------------------------------------------//
+printf (" -----------------------------\n");
+    printf("   Design and Developed by:\n\n");
+    printf("    ;;;;      ;;;;;;;;;;\n    ;;;;      ;;;;;;;;;\n    ;;;;         ;;;;;\n    ;;;;        ;;;;;\n    ;;;;;;;;   ;;;;;;;;;\n    ;;;;;;;;  ;;;;;;;;;; \n\n\n\n");
+}
+else if (jogo == 1){
+    system ("cls");
+    printf("\n\n\n\n\n\n        VAI DEVOLTA /O\\ \n\n\n\n\n\n");
+    // "formatação condicional" para apresentação dos pontos:
+if (pontos <= 10){
+    printf("\t  Pontos: %d\n\n\n\n", pontos);
+}
+else if (pontos >10 && pontos <= 100){
+    printf("          Pontos: %d\n\n", pontos);
+}
+else {
+    printf("        Pontos: %d\n\n\n\n", pontos);
+}
+//-----------------------------------------------------//
+printf (" -----------------------------\n");
+    printf("   Design and Developed by:\n\n");
+    printf("    ;;;;      ;;;;;;;;;;\n    ;;;;      ;;;;;;;;;\n    ;;;;         ;;;;;\n    ;;;;        ;;;;;\n    ;;;;;;;;   ;;;;;;;;;\n    ;;;;;;;;  ;;;;;;;;;; \n\n\n\n");
+}
+//printf("-------------------------\n\n");
+return 0;
+}
