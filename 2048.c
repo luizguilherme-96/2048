@@ -40,10 +40,27 @@ int main (){
 		jogo = check (m);
 		refresh (m);
 	}
+	// conferindo a pontuação:
+	FILE *fptr;
+	fptr = fopen("caminho\\Melhor.txt","r");
+	
+	if (fptr == NULL){
+		printf("Erro!");
+		exit (1);
+	}
+	fscanf(fptr,"%d", &melhor);
+	
+	if (pontos > melhor){
+		melhor = pontos;
+		fptr = fopen("caminho\\Melhor.txt","w");
+		fprintf(fptr,"%d", p);
+		fclose(fptr);
+	}
+
 	//--- GANHOU OU PERDEU ---//
 	if (jogo == 1){
 		system ("cls");
-		Win ();
+		zerou ();
 		if (pontos <= 10){
 		    printf("\n\t\t\t\t  Pontos: %d\n\n", pontos);
 		}
@@ -56,18 +73,18 @@ int main (){
 	}
 	else {
 		system ("cls");
-		GameOver ();
+		fim_de_jogo ();
 		if (pontos <= 10){
-		    printf("\n\t\t\t\t  Score: %d\n", pontos);
-			printf("\n\t\t\t    Best Score: %d\n", melhor);
+		    printf("\n\t\t\t\t  Pontosn", pontos);
+			printf("\n\t\t\t    Melhor Pontuação: %d\n", melhor);
 		}
 		else if (pontos >10 && pontos <= 100){
-		    printf("\n\t\t\t\t          Score: %d\n", pontos);
-			printf("\n\t\t\t\tBest Score: %d\n", melhor);
+		    printf("\n\t\t\t\t          Pontos: %d\n", pontos);
+			printf("\n\t\t\t\tMelhor Pontuação: %d\n", melhor);
 		}
 		else {
-		    printf("\n\t\t\t\t        Score: %d\n", pontos);
-			printf("\n\t\t\t\tBest Score: %d\n", melhor);
+		    printf("\n\t\t\t\t        Pontos: %d\n", pontos);
+			printf("\n\t\t\t\tMelhor Pontuação: %d\n", melhor);
 		}
 	}
 	
@@ -83,13 +100,13 @@ void refresh (int m[4][4]){
 	printf("\t    2048\n\n");
 	// "formataÃ§Ã£o condicional" para apresentaÃ§Ã£o dos pontos:
 	if (pontos <= 10){
-	    printf("\t  Score: %d\n\n", pontos);
+	    printf("\t  Pontos: %d\n\n", pontos);
 	}
 	else if (pontos >10 && pontos <= 100){
-	    printf("          Score: %d\n\n", pontos);
+	    printf("          Pontos: %d\n\n", pontos);
 	}
 	else {
-	    printf("        Score: %d\n\n", pontos);
+	    printf("        Pontos: %d\n\n", pontos);
 	}
 	//-----------------------------------------------------//
 	for (l=0;l<4;l++){
